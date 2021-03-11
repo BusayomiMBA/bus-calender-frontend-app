@@ -4,8 +4,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 
-// CSS
-import './App.css';
+
+
 
 // Components
 import Signup from './components/Signup';
@@ -15,7 +15,12 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
+
 import axios from 'axios';
+
+import UsersPage from './components/UsersPage';
+import EventPage from './components/EventPage';
+
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
   let token = localStorage.getItem('jwtToken');
@@ -43,7 +48,8 @@ function App() {
       setCurrentUser(token);
     }
 
-    axios.get
+    //AXIOS
+
   }, []);
 
   const nowCurrentUser = (userData) => {
@@ -63,7 +69,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>MERN Authentication</h1>
+      <h1>MyCalender App</h1>
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
       <div className="container mt-5">
         <Switch>
@@ -73,6 +79,8 @@ function App() {
             render={(props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>}
           />
           <PrivateRoute path="/profile" component={Profile} user={currentUser} handleLogout={handleLogout} />
+          <PrivateRoute path="/usersPage" component={UsersPage} user={currentUser} handleLogout={handleLogout} />
+          <PrivateRoute path="/eventPage" component={EventPage} user={currentUser} handleLogout={handleLogout} />
           <Route exact path="/" component={Welcome} />
           <Route path="/about" component={About} />
         </Switch>
@@ -83,7 +91,6 @@ function App() {
 }
 
 
-// axios.get('/api/users/profile')
-// .then(response => console.log(response)) //(this.setState({response})
+
 
 export default App;
