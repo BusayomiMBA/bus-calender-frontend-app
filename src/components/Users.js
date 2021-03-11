@@ -21,7 +21,7 @@ const Users = (props) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        const userData = { email, password };
+         const userData = { email, password };
 
         axios.post(`${REACT_APP_SERVER_URL}/users/login`, userData)
             .then(response => {

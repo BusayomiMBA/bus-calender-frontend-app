@@ -44,6 +44,7 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
+    //AXIOS
   }, []);
 
   const nowCurrentUser = (userData) => {
