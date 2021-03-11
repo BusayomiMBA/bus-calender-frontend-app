@@ -5,8 +5,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 
 
-// CSS
-import './App.css';
+
 
 // Components
 import Signup from './components/Signup';
@@ -16,8 +15,12 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
+
+import axios from 'axios';
+
 import UsersPage from './components/UsersPage';
 import EventPage from './components/EventPage';
+
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
   let token = localStorage.getItem('jwtToken');
@@ -44,7 +47,9 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
+
     //AXIOS
+
   }, []);
 
   const nowCurrentUser = (userData) => {
@@ -84,5 +89,8 @@ function App() {
     </div>
   );
 }
+
+
+
 
 export default App;
