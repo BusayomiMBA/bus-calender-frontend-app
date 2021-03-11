@@ -15,6 +15,7 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
+import axios from 'axios';
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
   let token = localStorage.getItem('jwtToken');
@@ -41,6 +42,8 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
+
+    axios.get
   }, []);
 
   const nowCurrentUser = (userData) => {
@@ -78,5 +81,9 @@ function App() {
     </div>
   );
 }
+
+
+// axios.get('/api/users/profile')
+// .then(response => console.log(response)) //(this.setState({response})
 
 export default App;
