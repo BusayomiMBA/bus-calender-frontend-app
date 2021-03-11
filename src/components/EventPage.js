@@ -3,7 +3,7 @@ import Events from './Events';
 const EventPage = (props) => {
     return (
         <div>
-              <Events />
+              <Events title={props.title} time={props.time} comment={props.comment}/>
         </div>
     );
 }

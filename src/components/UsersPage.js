@@ -5,7 +5,6 @@ const UsersPage = (props) => {
     return (
         <div>
             <Users />
-            
         </div>
     );
 }
