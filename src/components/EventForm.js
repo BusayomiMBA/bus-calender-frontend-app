@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import Events from './Events'
+import axios from 'axios';
+
+const { REACT_APP_SERVER_URL } = process.env;
 
 const EventForm = (props) => {
 
@@ -13,7 +15,8 @@ const EventForm = (props) => {
   const handleTitle= (e) => {
     // the value yes event.target.value
     setTitle(e.target.value)
-  }
+    }
+
   const handleTime = (e) => {
     // the value yes event.target.value
     setTime(e.target.value)
@@ -27,11 +30,18 @@ const EventForm = (props) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault()
-    // body: e.target.value
-    // completed: false
-    //call a function that is passed down as props
-    // props.createEvent(event)
-    // setEvent('')
+
+    const eventData = {title, time, comment}
+
+    axios.post(`${REACT_APP_SERVER_URL}/event/create`, eventData)
+        .then(response => {
+            const result = response.data;
+            console.log(result)
+        })
+        .catch(error => {
+            console.log('===> Error in eventform', error);
+             });
+    
   }
 
 

@@ -2,12 +2,13 @@ import React from 'react';
 import UserCard from './UserCard';
 import { useState } from 'react';
 import jwt_decode from 'jwt-decode';
-// import setAuthToken from './utils/setAuthToken';
+import axios from 'axios';
+import setAuthToken from '../utils/setAuthToken';
+const { REACT_APP_SERVER_URL } = process.env;
 
-const Users = () => {
 
-
-
+const Users = (props) => {
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -41,17 +42,17 @@ const Users = () => {
     }
 
 
-    const usersArrlist = usersArr.map((user, index) => {
-        return (
-            <UserCard key={index} name={user} />
-        )
+    // const usersArrlist = usersArr.map((user, index) => {
+    //     return (
+    //         <UserCard key={index} name={user} />
+    //     )
 
-    })
+    // })
 
 
     return (
         <div>
-            {usersArrlist}
+            {/* {usersArrlist} */}
         </div>
     );
 }
