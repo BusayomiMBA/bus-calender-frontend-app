@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Calender from "react-calendar";
-import Users from "./Users";
-import Events from "./Events";
 
 const Profile = (props) => {
    const { handleLogout, user } = props;

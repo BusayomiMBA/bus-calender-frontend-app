@@ -4,7 +4,7 @@ const UserCard = (props) => {
     return (
         <div>
            <p>{props.name}</p> 
-            <Link to='/eventPage'>Event</Link>
+            <Link to={`/eventPage/${props.name}`}>Event</Link>
         </div>
     );
 }

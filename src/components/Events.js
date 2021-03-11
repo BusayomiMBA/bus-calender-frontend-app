@@ -4,15 +4,18 @@ import EventType from './EventType';
 const eventObj = [
     {
         title: "EventOne",
-        time: "1pm",
+        time: "08:00",
+        comment: "1st event"
      },
     {
         title: "EventTwo",
-        time: "2pm",
+        time: "09:00",
+        comment: "2nd event"
     },
     {
         title: "EventThree",
-        time: "3pm",
+        time: "10:00",
+        comment: "3rd event"
     },
   ]
 
