@@ -40,7 +40,7 @@ const Profile = (props) => {
             {user ? userData : errorDiv()}
             
             {/* <Calender /> */}
-           
+           <div><Events /></div>
         </div>
     );
 
