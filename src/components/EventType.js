@@ -3,7 +3,7 @@ import React from 'react';
 const EventType = (props) => {
     return (
         <div>
-         <div>{props.title}</div>  
+         <p>{props.title}</p>
           
         </div>
     );

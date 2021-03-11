@@ -1,9 +1,10 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 const UserCard = (props) => {
     return (
         <div>
-            {props.name}
+           <p>{props.name}</p> 
+            <Link to='/eventPage'>Event</Link>
         </div>
     );
 }
