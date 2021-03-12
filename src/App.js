@@ -19,6 +19,8 @@ import Welcome from './components/Welcome';
 import UsersPage from './components/UsersPage';
 import EventPage from './components/EventPage';
 
+import EventModel from './models/Event'
+// import UserModel from './models/User'
 
 import axios from 'axios';
 
@@ -36,8 +38,7 @@ function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [user, setUser] = useState('')
-  const [event, setEvent] = useState('')
+  
  
   useEffect(() => {
     
@@ -51,27 +52,39 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
-    //AXIOS
-
-    axios.get(`${REACT_APP_SERVER_URL}/users`)
-    .then(response => {
-      const usersList = response.data;
-      console.log(usersList)
-      // setUser(usersList);
-      console.log('this is my user in use state')
-      console.log(user)
-    })
-    
-    axios.get(`${REACT_APP_SERVER_URL}/events`)
-    .then(response => {
-      const eventList = response.data;
-      console.log(eventList)
-      setEvent(eventList);
-      console.log('this is my event in use state')
-      console.log(event)
-    })
+   
 
   }, []);
+
+
+
+  // useEffect(() => {
+    
+  //   axios.get(`${REACT_APP_SERVER_URL}/events`)
+  //   .then(response => {
+  //     const eventList = response.data;
+  //     console.log(eventList)
+  //     setEvent(eventList);
+  //     console.log('this is my event in use state')
+  //     console.log(event)
+  //   })
+
+  // }, []);
+
+ 
+  // useEffect(() => {
+    
+  //    const fetchUsers = async()=> {
+  //           const res = await UserModel.all()
+  //           // console.log(res)
+  //           setUser(res.data)
+  //           console.log(user ,'User in app.js from useEffect')
+  //       }
+  //       fetchUsers()
+  
+  // }, []);
+
+
 
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');

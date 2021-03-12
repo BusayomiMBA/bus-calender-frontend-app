@@ -4,7 +4,7 @@ import Users from './Users';
 const UsersPage = (props) => {
     return (
         <div>
-            {/* <Users /> */}
+            <Users />
         </div>
     );
 }
