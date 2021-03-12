@@ -40,6 +40,10 @@ function App() {
 
   useEffect(() => {
     let token;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 719fef804379a87e865cfdca67ccf1599532903d
 
     if (!localStorage.getItem('jwtToken')) {
       setIsAuthenticated(false);
@@ -49,9 +53,22 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
+<<<<<<< HEAD
   }, []);
 
 
+=======
+
+  
+
+    .catch(error => {
+      console.log('===> Error in app.js', error);
+    });
+
+
+  }, []);
+
+>>>>>>> 719fef804379a87e865cfdca67ccf1599532903d
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');
     setCurrentUser(userData);
