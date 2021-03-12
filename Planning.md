@@ -1,7 +1,7 @@
 #  Application
 
 ## my calender app
-* This application is for scheduling apartment, it can be used by alot of user's to schedule appointment, anyone can schdule apointment base on avalability with this app.
+* This application is for scheduling appointment, it can be used by alot of user's to schedule appointment, anyone can schdule apointment base on avalability with this app.
 
 ### Motivation
 

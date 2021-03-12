@@ -3,10 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-
 // CSS
 import './App.css';
-
 // Components
 import Signup from './components/Signup';
 import About from './components/About';
@@ -15,7 +13,11 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
+import UsersPage from './components/UsersPage';
+import EventPage from './components/EventPage';
 import axios from 'axios';
+
+const { REACT_APP_SERVER_URL } = process.env;
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
   let token = localStorage.getItem('jwtToken');
@@ -24,16 +26,15 @@ const PrivateRoute = ({ component: Component, ...rest}) => {
     return token ? <Component {...rest} {...props} /> : <Redirect to="/login"/>
   }} />
 }
-
 function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [user, setUser] = useState('')
+  const [event, setEvent] = useState('')
 
- 
   useEffect(() => {
     let token;
-
     if (!localStorage.getItem('jwtToken')) {
       setIsAuthenticated(false);
       console.log('====> Authenticated is now FALSE');
@@ -42,16 +43,32 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
+    //AXIOS
+    axios.get(`${REACT_APP_SERVER_URL}/users`)
+    .then(response => {
+      const userList = response.data;
+      console.log(result)
+      setAuthToken(userList);
+    })
+    
+    axios.get(`${REACT_APP_SERVER_URL}/events`)
+    .then(response => {
+      const result = response.data;
+      console.log(result)
+    })
 
-    axios.get
+
+    .catch(error => {
+      console.log('===> Error in app.js', error);
+    });
+
+
   }, []);
-
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');
     setCurrentUser(userData);
     setIsAuthenticated(true);
   }
-
   const handleLogout = () => {
     if (localStorage.getItem('jwtToken')) {
       // remove token for localStorage
@@ -60,19 +77,20 @@ function App() {
       setIsAuthenticated(false);
     }
   }
-
   return (
     <div className="App">
-      <h1>MERN Authentication</h1>
+      <h1>MyCalender App</h1>
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
       <div className="container mt-5">
         <Switch>
           <Route path='/signup' component={Signup} />
-          <Route 
+          <Route
             path="/login"
             render={(props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>}
           />
           <PrivateRoute path="/profile" component={Profile} user={currentUser} handleLogout={handleLogout} />
+          <PrivateRoute path="/usersPage" component={UsersPage} user={currentUser} handleLogout={handleLogout} />
+          <PrivateRoute path="/eventPage" component={EventPage} user={currentUser} handleLogout={handleLogout} />
           <Route exact path="/" component={Welcome} />
           <Route path="/about" component={About} />
         </Switch>
@@ -81,9 +99,4 @@ function App() {
     </div>
   );
 }
-
-
-// axios.get('/api/users/profile')
-// .then(response => console.log(response)) //(this.setState({response})
-
 export default App;
