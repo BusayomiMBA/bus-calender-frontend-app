@@ -37,11 +37,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
 
-
   useEffect(() => {
-    
     let token;
-    
 
     if (!localStorage.getItem('jwtToken')) {
       setIsAuthenticated(false);
@@ -51,15 +48,8 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
-
-  
-
-    .catch(error => {
-      console.log('===> Error in app.js', error);
-    });
-
-
   }, []);
+  
 
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');
