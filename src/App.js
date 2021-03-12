@@ -19,6 +19,11 @@ import Welcome from './components/Welcome';
 import UsersPage from './components/UsersPage';
 import EventPage from './components/EventPage';
 
+
+import axios from 'axios';
+
+const { REACT_APP_SERVER_URL } = process.env;
+
 const PrivateRoute = ({ component: Component, ...rest}) => {
   let token = localStorage.getItem('jwtToken');
   console.log('===> Hitting a Private Route');
@@ -31,11 +36,13 @@ function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-
+  const [user, setUser] = useState('')
+  const [event, setEvent] = useState('')
  
   useEffect(() => {
+    
     let token;
-
+    
     if (!localStorage.getItem('jwtToken')) {
       setIsAuthenticated(false);
       console.log('====> Authenticated is now FALSE');
@@ -45,6 +52,25 @@ function App() {
       setCurrentUser(token);
     }
     //AXIOS
+
+    axios.get(`${REACT_APP_SERVER_URL}/users`)
+    .then(response => {
+      const usersList = response.data;
+      console.log(usersList)
+      // setUser(usersList);
+      console.log('this is my user in use state')
+      console.log(user)
+    })
+    
+    axios.get(`${REACT_APP_SERVER_URL}/events`)
+    .then(response => {
+      const eventList = response.data;
+      console.log(eventList)
+      setEvent(eventList);
+      console.log('this is my event in use state')
+      console.log(event)
+    })
+
   }, []);
 
   const nowCurrentUser = (userData) => {

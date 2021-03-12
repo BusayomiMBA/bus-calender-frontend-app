@@ -11,6 +11,7 @@ const Users = (props) => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
 
 
     const handleEmail = (e) => {
@@ -42,7 +43,7 @@ const Users = (props) => {
     }
 
 
-    // const usersArrlist = usersArr.map((user, index) => {
+    // const usersArrlist = props.usersList.map((user, index) => {
     //     return (
     //         <UserCard key={index} name={user} />
     //     )
@@ -50,11 +51,11 @@ const Users = (props) => {
     // })
 
 
-    return (
-        <div>
-            {/* {usersArrlist} */}
-        </div>
-    );
+    // return (
+    //     <div>
+    //         {usersArrlist}
+    //     </div>
+    // );
 }
 
 export default Users;
