@@ -3,8 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
+<<<<<<< HEAD
 // CSS
 import './App.css';
+=======
+
+
+
+
+>>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
 // Components
 import Signup from './components/Signup';
 import About from './components/About';
@@ -13,11 +20,20 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
+<<<<<<< HEAD
 import UsersPage from './components/UsersPage';
 import EventPage from './components/EventPage';
 import axios from 'axios';
 
 const { REACT_APP_SERVER_URL } = process.env;
+=======
+
+import axios from 'axios';
+
+import UsersPage from './components/UsersPage';
+import EventPage from './components/EventPage';
+
+>>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
   let token = localStorage.getItem('jwtToken');
@@ -43,6 +59,7 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
+<<<<<<< HEAD
     //AXIOS
     axios.get(`${REACT_APP_SERVER_URL}/users`)
     .then(response => {
@@ -57,6 +74,12 @@ function App() {
       console.log(result)
     })
 
+=======
+
+    //AXIOS
+
+  }, []);
+>>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
 
     .catch(error => {
       console.log('===> Error in app.js', error);
@@ -99,4 +122,11 @@ function App() {
     </div>
   );
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
 export default App;
