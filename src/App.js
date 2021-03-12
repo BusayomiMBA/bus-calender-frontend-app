@@ -3,15 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-<<<<<<< HEAD
+
 // CSS
 import './App.css';
-=======
 
-
-
-
->>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
 // Components
 import Signup from './components/Signup';
 import About from './components/About';
@@ -20,20 +15,14 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
-<<<<<<< HEAD
 import UsersPage from './components/UsersPage';
 import EventPage from './components/EventPage';
 import axios from 'axios';
+import UsersPage from './components/UsersPage';
+import EventPage from './components/EventPage';
+
 
 const { REACT_APP_SERVER_URL } = process.env;
-=======
-
-import axios from 'axios';
-
-import UsersPage from './components/UsersPage';
-import EventPage from './components/EventPage';
-
->>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
 
 const PrivateRoute = ({ component: Component, ...rest}) => {
   let token = localStorage.getItem('jwtToken');
@@ -46,11 +35,14 @@ function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [user, setUser] = useState('')
-  const [event, setEvent] = useState('')
+
+
 
   useEffect(() => {
+    
     let token;
+    
+
     if (!localStorage.getItem('jwtToken')) {
       setIsAuthenticated(false);
       console.log('====> Authenticated is now FALSE');
@@ -59,27 +51,8 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
-<<<<<<< HEAD
-    //AXIOS
-    axios.get(`${REACT_APP_SERVER_URL}/users`)
-    .then(response => {
-      const userList = response.data;
-      console.log(result)
-      setAuthToken(userList);
-    })
-    
-    axios.get(`${REACT_APP_SERVER_URL}/events`)
-    .then(response => {
-      const result = response.data;
-      console.log(result)
-    })
 
-=======
-
-    //AXIOS
-
-  }, []);
->>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
+  
 
     .catch(error => {
       console.log('===> Error in app.js', error);
@@ -87,6 +60,7 @@ function App() {
 
 
   }, []);
+
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');
     setCurrentUser(userData);
@@ -122,11 +96,5 @@ function App() {
     </div>
   );
 }
-<<<<<<< HEAD
-=======
 
-
-
-
->>>>>>> f13e3975069b410e9ce88e72ee58ead7b975d5c1
 export default App;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-
+import EventModel from '../models/Event'
 const { REACT_APP_SERVER_URL } = process.env;
 
 const EventForm = (props) => {
@@ -43,6 +43,31 @@ const EventForm = (props) => {
       });
 
   }
+
+  const createEvent = async(event) => {
+    console.log(event)
+    let newEvent = {
+        title,
+        time,
+        comment
+    }
+    const anotherEvent = await EventModel.create(newEvent)
+    console.log(anotherEvent)
+    
+    // setTodos([...todos, anotherTodo.data])
+}
+
+const deleteEvent= async(event)=> {
+  console.log(event)
+  // talk to database
+  const deletedEvent = await EventModel.delete(event)
+  // filter is going to check and remove the todo with the id that was passed in
+  let tempEvents = [...event].filter((eachEvent)=> {
+      return eachEvent._id !== deletedEvent.data._id
+  })
+  //we will have to update state
+  // setTodos(tempTodos)
+}
 
 
 
