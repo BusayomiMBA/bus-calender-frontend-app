@@ -35,7 +35,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
 
-
   useEffect(() => {
     let token;
 
@@ -48,7 +47,6 @@ function App() {
       setCurrentUser(token);
     }
   }, []);
-
 
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');
