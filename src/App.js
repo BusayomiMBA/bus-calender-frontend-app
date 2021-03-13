@@ -18,8 +18,6 @@ import Welcome from './components/Welcome';
 import UsersPage from './components/UsersPage';
 import EventPage from './components/EventPage';
 import axios from 'axios';
-import UsersPage from './components/UsersPage';
-import EventPage from './components/EventPage';
 
 
 const { REACT_APP_SERVER_URL } = process.env;
@@ -40,10 +38,6 @@ function App() {
 
   useEffect(() => {
     let token;
-<<<<<<< HEAD
-=======
-    
->>>>>>> 719fef804379a87e865cfdca67ccf1599532903d
 
     if (!localStorage.getItem('jwtToken')) {
       setIsAuthenticated(false);
@@ -53,22 +47,9 @@ function App() {
       setAuthToken(localStorage.getItem('jwtToken'));
       setCurrentUser(token);
     }
-<<<<<<< HEAD
   }, []);
 
 
-=======
-
-  
-
-    .catch(error => {
-      console.log('===> Error in app.js', error);
-    });
-
-
-  }, []);
-
->>>>>>> 719fef804379a87e865cfdca67ccf1599532903d
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');
     setCurrentUser(userData);
