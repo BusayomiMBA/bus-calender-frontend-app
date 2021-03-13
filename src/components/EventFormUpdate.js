@@ -2,16 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import EventModel from '../models/Event'
-import { useHistory } from 'react-router-dom'
 const { REACT_APP_SERVER_URL } = process.env;
 
-const EventForm = (props) => {
+const EventFormUpdate = (props) => {
 
 
   const [title, setTitle] = useState('')
   const [time, setTime] = useState('')
   const [comment, setComment] = useState('')
-   let history = useHistory();
 
 
   const handleTitle = (e) => {
@@ -35,12 +33,10 @@ const EventForm = (props) => {
 
     const eventData = { title, time, comment }
 
-    axios.post(`${REACT_APP_SERVER_URL}/events`, eventData)
+    axios.put(`${REACT_APP_SERVER_URL}/events`, eventData)
       .then(response => {
         const result = response.data;
         console.log(result)
-        // history.push("/eventPage")
-       props.eform()
       })
       .catch(error => {
         console.log('===> Error in eventform', error);
@@ -87,4 +83,4 @@ const EventForm = (props) => {
   );
 }
 
-export default EventForm;
+export default EventFormUpdate;

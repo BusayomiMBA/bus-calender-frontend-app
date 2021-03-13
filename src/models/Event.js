@@ -16,6 +16,11 @@ class EventModel {
         return request
     }
     // methods to update delete etc.
+
+    static update = (event) => {
+        let request = axios.update(`${REACT_APP_SERVER_URL}/events, ${event._id}`)
+        return request
+    }
 }
 
 export default EventModel;

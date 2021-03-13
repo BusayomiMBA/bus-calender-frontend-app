@@ -18,8 +18,6 @@ import Welcome from './components/Welcome';
 import UsersPage from './components/UsersPage';
 import EventPage from './components/EventPage';
 import axios from 'axios';
-import UsersPage from './components/UsersPage';
-import EventPage from './components/EventPage';
 
 
 const { REACT_APP_SERVER_URL } = process.env;
@@ -49,8 +47,6 @@ function App() {
       setCurrentUser(token);
     }
   }, []);
-  
-
 
   const nowCurrentUser = (userData) => {
     console.log('===> nowCurrent is here.');
