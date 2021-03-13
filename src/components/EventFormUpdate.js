@@ -26,7 +26,7 @@ const EventFormUpdate = (props) => {
     setComment(e.target.value)
   }
 
-
+console.log('me2a');
 
   const onFormSubmit = (e) => {
     e.preventDefault()
