@@ -30,17 +30,17 @@ const EventForm = (props) => {
 
 
 
-  const onFormSubmit = (e) => {
-    e.preventDefault()
-
+  const onFormSubmit = async (e) => {
+     e.preventDefault()
+console.log(props)
     const eventData = { title, time, comment }
 
-    axios.post(`${REACT_APP_SERVER_URL}/events`, eventData)
+     await axios.post(`${REACT_APP_SERVER_URL}/events`, eventData)
       .then(response => {
         const result = response.data;
         console.log(result)
-        // history.push("/eventPage")
-       props.eform()
+        props.eform()
+       history.push("/eventPage")
       })
       .catch(error => {
         console.log('===> Error in eventform', error);
@@ -81,7 +81,7 @@ const EventForm = (props) => {
             placeholder="comment here"
             value={props.comment}
           />
-          <button type="submit" id="addTask" className='btn'>Submit</button>
+          <button type="submit" id="addTask" className='btn'>Add Event</button>
 </form>
     </div>
   );

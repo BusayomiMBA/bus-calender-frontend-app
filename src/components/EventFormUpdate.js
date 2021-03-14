@@ -26,7 +26,7 @@ const EventFormUpdate = (props) => {
     setComment(e.target.value)
   }
 
-console.log('me2a');
+
 
   const onFormSubmit = (e) => {
     e.preventDefault()
@@ -44,9 +44,7 @@ console.log('me2a');
 
   }
 
- 
-
-  return (
+ const defaultForm = (
     <div>
       <form onSubmit={onFormSubmit}>
         
@@ -77,7 +75,7 @@ console.log('me2a');
             placeholder="comment here"
             value={props.comment}
           />
-          <button type="submit" id="addTask" className='btn'>Submit</button>
+          <button type="submit" id="updateEvent" className='btn'>Update Event</button>
 </form>
     </div>
   );

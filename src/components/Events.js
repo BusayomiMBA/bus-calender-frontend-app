@@ -24,14 +24,14 @@ useEffect(() => {
 
 
 
-  const eventLists = event.map((event, index) => {
-                 return <EventType { ...event} key={index}/>
-  })
+//   const eventLists = event.map((event, index) => {
+//                  return <EventType { ...event} key={index}/>
+//   })
 
 
     return (
         <div>
-           {eventLists} 
+           {/* {eventLists}  */}
         </div>
     );
 }
