@@ -81,7 +81,8 @@ console.log(props)
             placeholder="comment here"
             value={props.comment}
           />
-          <button type="submit" id="addTask" className='btn'>Add Event</button>
+          <button type="submit" id="addTask">Add Event</button>
+          {/* <button type="submit" id="addTask" className='btn'>Add Event</button> */}
 </form>
     </div>
   );
